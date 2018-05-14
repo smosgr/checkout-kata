@@ -140,5 +140,3 @@ gradle/
 gradlew
 gradlew.bat
 out/
-src/main/resources/
-src/test/resources/
