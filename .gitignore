@@ -137,7 +137,6 @@ gradle-app.setting
 .gradle/
 build/
 gradle/
-gradlew
 gradlew.bat
 out/
 /CheckoutKata.pdf
