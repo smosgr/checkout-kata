@@ -4,7 +4,7 @@ public class SuperMarketCheckoutApp {
         init();
     }
 
-    public static String init(){
+    public static String init() {
         return "Hi";
     }
 }
