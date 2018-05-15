@@ -11,11 +11,7 @@ public class SuperMarketCheckoutApp {
         String pricingRules = "test-pricing";
 
         Checkout co = new Checkout();
-        co.setPricingRules(pricingRules);
+        co.applyPricingRules(pricingRules);
 
-    }
-
-    public String testTest() {
-        return "Hi";
     }
 }
