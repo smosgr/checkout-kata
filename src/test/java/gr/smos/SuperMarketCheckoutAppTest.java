@@ -9,11 +9,17 @@ public class SuperMarketCheckoutAppTest {
 
     @Test
     public void oneA() {
+
+        //given
         Checkout checkout = new Checkout();
-        SKU item = new SKU();
+        SKU item = new SKU("A", 1000);
+
+
+        //when
         checkout.scan(item);
 
-        assertEquals(123, checkout.calculateTotal());
+        //then
+        assertEquals(1000, checkout.calculateTotal());
     }
 
 }
