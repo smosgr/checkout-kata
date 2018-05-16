@@ -27,7 +27,7 @@ public class Checkout {
 
     public int calculateTotal() {
 
-        int total = items.get(0).getPrice();
+        int total = items.stream().mapToInt(SKU::getPrice).sum();
 
         return total;
     }
