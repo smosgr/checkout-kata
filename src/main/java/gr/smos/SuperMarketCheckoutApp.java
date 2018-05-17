@@ -8,10 +8,14 @@ public class SuperMarketCheckoutApp {
 
     public static void init() {
 
-        String pricingRules = "test-pricing";
+        ConsoleApp consoleApp = new ConsoleApp();
+        consoleApp.setupConsole();
 
-        Checkout co = new Checkout();
-        co.applyPricingRules(pricingRules);
 
+        while (consoleApp.readFromConsole().equals("Q")) {
+            consoleApp.readFromConsole();
+        }
+
+        System.exit(1);
     }
 }

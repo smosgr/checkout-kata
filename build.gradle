@@ -5,12 +5,12 @@ apply plugin: 'java'
 apply plugin: 'application'
 apply plugin: 'idea'
 
+mainClassName = "gr.smos.SuperMarketCheckoutApp"
 sourceCompatibility = 1.8
-mainClassName = "SuperMarketCheckoutApp"
 
 jar {
     manifest {
-        attributes 'Main-Class': 'SuperMarketCheckoutApp'
+        attributes 'Main-Class': 'gr.smos.SuperMarketCheckoutApp'
     }
 }
 

@@ -18,7 +18,7 @@ public class SuperMarketCheckoutAppTest {
         checkout.scan(item);
 
         //then
-        assertEquals(1000, checkout.calculateTotal());
+        assertEquals(50, checkout.calculateTotal());
     }
 
 
@@ -61,7 +61,60 @@ public class SuperMarketCheckoutAppTest {
     }
 
     @Test
-    public void scanDifferentTypesOfProducts() {
+    public void scanDifferentTypesOfProductsWithNoOffers() {
+
+        //given a variety of products
+        Checkout checkout = new Checkout();
+        SKU itemA = new SKU("A", 50);
+        SKU itemB = new SKU("B", 30);
+        SKU itemC = new SKU("C", 20);
+        SKU itemD = new SKU("D", 15);
+
+        //when different types of products are scanned
+        checkout.scan(itemA);
+        checkout.scan(itemB);
+        checkout.scan(itemA);
+        checkout.scan(itemC);
+        checkout.scan(itemD);
+        checkout.scan(itemB);
+
+        //then
+        assertEquals(195, checkout.calculateTotal());
+
+    }
+
+    @Test
+    public void scanDifferentTypesOfProductsWithOffers() {
+
+        //given a variety of products
+        Checkout checkout = new Checkout();
+        SKU itemA1 = new SKU("A", 50);
+        SKU itemA2 = new SKU("A", 50);
+        SKU itemA3 = new SKU("A", 50);
+        SKU itemB1 = new SKU("A", 30);
+        SKU itemB2 = new SKU("A", 30);
+        SKU itemC = new SKU("C", 20);
+        SKU itemD = new SKU("D", 15);
+
+        //when different types of products are scanned
+        checkout.scan(itemA1);
+        checkout.scan(itemA2);
+        checkout.scan(itemA3);
+        checkout.scan(itemB1);
+        checkout.scan(itemB2);
+        checkout.scan(itemC);
+        checkout.scan(itemD);
+
+        //and discount is applied
+        //TODO call offer()
+
+        //then return the discounted total
         assert true;
     }
+
+    @Test
+    public void scan6ProductsOfAToReceiveDiscountTwice() {
+        assert true;
+    }
+
 }
