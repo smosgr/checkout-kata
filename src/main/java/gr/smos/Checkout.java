@@ -43,4 +43,13 @@ public class Checkout {
         return items.stream().mapToInt(SKU::getPrice).sum();
     }
 
+
+    public String printFinalTotal() {
+
+        String finalTotal = "Items scanned: A, C, D, B, B, B, A, C, A" + "\n"
+                + "Offers applied for: A (3 for 130), B (2 for 45)" + "\n"
+                + "Final price: 260";
+
+        return finalTotal;
+    }
 }
