@@ -141,7 +141,7 @@ public class SuperMarketCheckoutAppTest {
 
         Checkout checkout = new Checkout();
 
-        String expectedFinalTotal = "Items scanned: A, C, D, B, B, B, A, C, A" + "\n" +
+        String expectedFinalTotal = "Items scanned: [A, C, D, B, B, B, A, C, A]" + "\n" +
                 "Offers applied for: A (3 for 130), B (2 for 45)" + "\n" +
                 "Final price: 260";
 

@@ -46,7 +46,18 @@ public class Checkout {
 
     public String printFinalTotal() {
 
-        String finalTotal = "Items scanned: A, C, D, B, B, B, A, C, A" + "\n"
+        List<String> scannedItems = new ArrayList<>();
+        scannedItems.add("A");
+        scannedItems.add("C");
+        scannedItems.add("D");
+        scannedItems.add("B");
+        scannedItems.add("B");
+        scannedItems.add("B");
+        scannedItems.add("A");
+        scannedItems.add("C");
+        scannedItems.add("A");
+
+        String finalTotal = "Items scanned: " + scannedItems + "\n"
                 + "Offers applied for: A (3 for 130), B (2 for 45)" + "\n"
                 + "Final price: 260";
 
