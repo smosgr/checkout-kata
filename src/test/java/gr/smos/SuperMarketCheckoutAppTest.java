@@ -118,35 +118,4 @@ public class SuperMarketCheckoutAppTest {
     }
 
 
-    @Test
-    public void testPrintingXProductsAtCheckout() {
-
-        /*
-        Acceptance criteria for a basic user journey:
-
-        As a customer I want to buy A SET OF PRODUCTS
-        and see the final price displayed in my screen.
-
-        Given I have 3 Products of type A, 3 of type B, 2 of type C and 1 of type D
-        When I scan them at the supermarket checkout
-        Then the relevant offers are applied
-        And the final price is displayed in my terminal.
-
-        Example output
-        ----------------------------------------------------------
-        Items scanned: A, C, D, B, B, B, A, C, A
-        Offers applied for: A (3 for 130), B (2 for 45)
-        Final price: 260
-         */
-
-        Checkout checkout = new Checkout();
-
-        String expectedFinalTotal = "Items scanned: [A, C, D, B, B, B, A, C, A]" + "\n" +
-                "Offers applied for: A (3 for 130), B (2 for 45)" + "\n" +
-                "Final price: 260";
-
-        assertEquals(expectedFinalTotal, checkout.printFinalTotal());
-
-    }
-
 }

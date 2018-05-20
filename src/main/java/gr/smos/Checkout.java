@@ -6,12 +6,9 @@ import java.util.List;
 public class Checkout {
 
 
-    ConsoleApp output = new ConsoleApp();
-
-
     List<SKU> items = new ArrayList<>();
 
-    Checkout() {
+    public Checkout() {
     }
 
     public void scan(SKU item) {
@@ -45,6 +42,8 @@ public class Checkout {
 
 
     public String printFinalTotal() {
+
+
 
         List<String> scannedItems = new ArrayList<>();
         scannedItems.add("A");
