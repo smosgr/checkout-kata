@@ -1,17 +1,16 @@
 group 'gr.smos'
-version '1.0-SNAPSHOT'
+version '1.0'
 
 apply plugin: 'java'
 apply plugin: 'application'
-apply plugin: 'jacoco'
 apply plugin: 'idea'
 
+mainClassName = "gr.smos.SuperMarketCheckoutApp"
 sourceCompatibility = 1.8
-mainClassName = "SuperMarketCheckoutApp"
 
 jar {
     manifest {
-        attributes 'Main-Class': 'SuperMarketCheckoutApp'
+        attributes 'Main-Class': 'gr.smos.SuperMarketCheckoutApp'
     }
 }
 
@@ -21,22 +20,7 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'}
-
-def jacocoVersion = '0.7.9'
-
-jacoco {
-    toolVersion = jacocoVersion
-}
-
-jacocoTestCoverageVerification {
-    violationRules {
-        rule {
-            limit {
-                minimum = 0.9
-            }
-        }
-    }
+    testCompile group: 'org.mockito', name: 'mockito-all', version: '1.10.19'
 }
 
 
@@ -45,9 +29,6 @@ test {
     reports.html.enabled = true
     reports.junitXml.enabled = true
 
-    jacoco {
-        append = true
-    }
 
     reports {
         html.enabled true
@@ -64,27 +45,4 @@ tasks.withType(Test) {
     }
 }
 
-def coverageExcludes = [
-]
 
-
-jacocoTestReport {
-    sourceDirectories = files('src/main/java')
-    dependsOn(test)
-
-    reports {
-        xml.enabled = false
-        csv.enabled = false
-        html.enabled = true
-        html.destination file("${buildDir}/reports/coverage/test/")
-        println html.destination
-    }
-
-    afterEvaluate {
-        classDirectories = files(classDirectories.files.collect {
-            fileTree(dir: it, excludes: coverageExcludes)
-        })
-    }
-}
-
-test.finalizedBy(jacocoTestReport)
