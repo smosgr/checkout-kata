@@ -18,7 +18,6 @@ public class PrintCheckoutTotalAmountFeature {
 
     }
 
-
     @Test
     public void printTotalPriceWithDiscountsApplied() {
         /*
@@ -41,7 +40,7 @@ public class PrintCheckoutTotalAmountFeature {
          */
 
         Offer offer = Mockito.mock(Offer.class);
-        offer.applyPricingRules("TEST-RULES");
+        offer.applyPricingRules();
 
         String finalTotal = checkout.printFinalTotal();
 

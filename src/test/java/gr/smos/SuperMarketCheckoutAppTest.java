@@ -1,6 +1,10 @@
 package gr.smos;
 
+import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -12,13 +16,14 @@ public class SuperMarketCheckoutAppTest {
 
         //given
         Checkout checkout = new Checkout();
+        List<SKU> scannedItems = new ArrayList<>();
         SKU item = new SKU("A", 50);
 
         //when
-        checkout.scan(item);
+        scannedItems.add(item);
 
         //then
-        assertEquals(50, checkout.calculateTotal());
+        assertEquals(50, checkout.calculateTotal(scannedItems, false));
     }
 
 
@@ -27,16 +32,18 @@ public class SuperMarketCheckoutAppTest {
 
         //given
         Checkout checkout = new Checkout();
+        List<SKU> scannedItems = new ArrayList<>();
+
         SKU item1, item2;
         item1 = new SKU("A", 50);
         item2 = new SKU("A", 50);
 
         //when
-        checkout.scan(item1);
-        checkout.scan(item2);
+        scannedItems.add(item1);
+        scannedItems.add(item2);
 
         //then
-        assertEquals(100, checkout.calculateTotal());
+        assertEquals(100, checkout.calculateTotal(scannedItems, false));
     }
 
 
@@ -45,6 +52,7 @@ public class SuperMarketCheckoutAppTest {
 
         //given we have 10 items of product 'A'
         Checkout checkout = new Checkout();
+        List<SKU> scannedItems = new ArrayList<>();
         SKU item[] = new SKU[10];
 
         for (int i = 0; i < 10; i++) {
@@ -53,11 +61,11 @@ public class SuperMarketCheckoutAppTest {
 
         //when we scan all 'A' products
         for (int j = 0; j < item.length; j++) {
-            checkout.scan(item[j]);
+            scannedItems.add(item[j]);
         }
 
         //then
-        assertEquals(500, checkout.calculateTotal());
+        assertEquals(500, checkout.calculateTotal(scannedItems, false));
     }
 
     @Test
@@ -65,57 +73,53 @@ public class SuperMarketCheckoutAppTest {
 
         //given a variety of products
         Checkout checkout = new Checkout();
+        List<SKU> scannedItems = new ArrayList<>();
         SKU itemA = new SKU("A", 50);
         SKU itemB = new SKU("B", 30);
         SKU itemC = new SKU("C", 20);
         SKU itemD = new SKU("D", 15);
 
+
         //when different types of products are scanned
-        checkout.scan(itemA);
-        checkout.scan(itemB);
-        checkout.scan(itemA);
-        checkout.scan(itemC);
-        checkout.scan(itemD);
-        checkout.scan(itemB);
+        scannedItems.add(itemA);
+        scannedItems.add(itemB);
+        scannedItems.add(itemA);
+        scannedItems.add(itemC);
+        scannedItems.add(itemD);
+        scannedItems.add(itemB);
 
         //then
-        assertEquals(195, checkout.calculateTotal());
-
+        assertEquals(195, checkout.calculateTotal(scannedItems, false));
     }
 
+    @Ignore
     @Test
     public void scanDifferentTypesOfProductsWithOffers() {
 
         //given a variety of products
         Checkout checkout = new Checkout();
+
+        List<SKU> scannedItems = new ArrayList<>();
         SKU itemA1 = new SKU("A", 50);
         SKU itemA2 = new SKU("A", 50);
         SKU itemA3 = new SKU("A", 50);
-        SKU itemB1 = new SKU("A", 30);
-        SKU itemB2 = new SKU("A", 30);
+        SKU itemB1 = new SKU("B", 30);
+        SKU itemB2 = new SKU("B", 30);
         SKU itemC = new SKU("C", 20);
         SKU itemD = new SKU("D", 15);
 
         //when different types of products are scanned
-        checkout.scan(itemA1);
-        checkout.scan(itemA2);
-        checkout.scan(itemA3);
-        checkout.scan(itemB1);
-        checkout.scan(itemB2);
-        checkout.scan(itemC);
-        checkout.scan(itemD);
+        scannedItems.add(itemA1);
+        scannedItems.add(itemA2);
+        scannedItems.add(itemA3);
+        scannedItems.add(itemB1);
+        scannedItems.add(itemB2);
+        scannedItems.add(itemC);
+        scannedItems.add(itemD);
 
-        //and discount is applied
-        //TODO call offer()
 
         //then return the discounted total
-        assert true;
+        assertEquals(210, checkout.calculateTotal(scannedItems, true));
     }
-
-    @Test
-    public void scan6ProductsOfAToReceiveDiscountTwice() {
-        assert true;
-    }
-
 
 }
