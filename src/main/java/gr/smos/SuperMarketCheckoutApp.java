@@ -33,7 +33,7 @@ public class SuperMarketCheckoutApp {
 
 
         int finalTotal = checkout.calculateTotal(scannedItems, false);
-        outcomePrinter.printFinalTotal(finalTotal, scannedItems);
+        System.out.println(outcomePrinter.printFinalTotal(finalTotal, scannedItems));
 
     }
 }
